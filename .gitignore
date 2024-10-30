@@ -2,5 +2,11 @@
 # Virtual Env
 venv/
 
- # cache
+# cache
 __pycache__/
+
+# db file
+db.sqlite3
+
+# Env
+.env
