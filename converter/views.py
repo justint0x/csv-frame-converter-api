@@ -8,7 +8,6 @@ import os
 from converter.openapi import InputFileParams
 from mixins.responses import RhombusResponse
 
-# Create your views here.
 
 class DataConverterAPIView(APIView):
     
