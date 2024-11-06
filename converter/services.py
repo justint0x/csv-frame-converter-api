@@ -1,7 +1,8 @@
 import pandas as pd
+import numpy as np
 
 
-def infer_and_convert_data_types(df: pd.DataFrame) -> pd.DataFrame:
+def infer_and_convert_data_types(df: pd.DataFrame) -> dict:
     for col in df.columns:
         # Attempt to convert to numeric first
         df_converted = pd.to_numeric(df[col], errors='coerce')
@@ -28,4 +29,5 @@ def infer_and_convert_data_types(df: pd.DataFrame) -> pd.DataFrame:
         if len(df[col].unique()) / len(df[col]) < 0.5:  # Example threshold for categorization
             df[col] = pd.Categorical(df[col])
 
+    df = df.replace({np.nan: None})
     return df.to_dict(orient='split', index=False)
