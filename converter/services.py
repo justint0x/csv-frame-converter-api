@@ -30,4 +30,7 @@ def infer_and_convert_data_types(df: pd.DataFrame) -> dict:
             df[col] = pd.Categorical(df[col])
 
     df = df.replace({np.nan: None})
-    return df.to_dict(orient='split', index=False)
+
+    result = df.to_dict(orient='split', index=False)
+    result['data_types'] = [str(dtype) for dtype in df.dtypes]
+    return result
