@@ -29,8 +29,8 @@ def infer_and_convert_data_types(df: pd.DataFrame) -> dict:
         if len(df[col].unique()) / len(df[col]) < 0.5:  # Example threshold for categorization
             df[col] = pd.Categorical(df[col])
 
+    dtypes = [str(dtype) for dtype in df.dtypes]
     df = df.replace({np.nan: None})
-
     result = df.to_dict(orient='split', index=False)
-    result['data_types'] = [str(dtype) for dtype in df.dtypes]
+    result['data_types'] = dtypes
     return result
